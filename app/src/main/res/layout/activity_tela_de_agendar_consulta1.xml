@@ -46,7 +46,7 @@
         app:layout_constraintVertical_bias="0.317" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/spinnerRegiao"
         android:layout_width="314dp"
         android:layout_height="49dp"
         android:layout_marginTop="96dp"
@@ -58,7 +58,7 @@
         app:layout_constraintTop_toBottomOf="@id/textBeneficiarioResultado" />
 
     <Spinner
-        android:id="@+id/spinner2"
+        android:id="@+id/spinnerEspecialidade"
         android:layout_width="314dp"
         android:layout_height="49dp"
         android:layout_marginTop="212dp"
@@ -78,7 +78,7 @@
         android:layout_marginEnd="278dp"
         android:layout_marginBottom="8dp"
         android:text="Especialidade"
-        app:layout_constraintBottom_toTopOf="@+id/spinner"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerRegiao"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView7" />
@@ -92,10 +92,10 @@
         android:layout_marginEnd="322dp"
         android:layout_marginBottom="17dp"
         android:text="Região"
-        app:layout_constraintBottom_toTopOf="@+id/spinner2"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerEspecialidade"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerRegiao" />
 
     <Button
         android:id="@+id/btnProximoPasso"
@@ -109,7 +109,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner2" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerEspecialidade" />
 
     <Button
         android:id="@+id/btnVoltarParaAgendamento"

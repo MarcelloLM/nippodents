@@ -2,8 +2,10 @@ package com.example.nippov2;
 
 import android.os.AsyncTask;
 import android.util.Log;
+
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,18 +14,20 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class AlterarDadosTask extends AsyncTask<String, Void, String> {
-    private static final String TAG = "AlterarDadosTask";
-    private AlterarDadosListener mListener;
+public class SalvarEspecialidadeRegiaoTask extends AsyncTask<String, Void, String> {
+    private static final String TAG = "SalvarEspecialidadeRegiaoTask";
 
-    // Interface para lidar com eventos de sucesso e erro ao alterar dados
-    public interface AlterarDadosListener {
-        void onAlterarDadosSuccess(String message);
-        void onAlterarDadosError(String message);
+    // Interface para lidar com eventos de sucesso e erro ao salvar
+    private SalvarEspecialidadeRegiaoListener mListener;
+
+    // Interface para o ouvinte
+    public interface SalvarEspecialidadeRegiaoListener {
+        void onSalvarSuccess(String message);
+        void onSalvarError(String message);
     }
 
     // Construtor para definir o ouvinte
-    public AlterarDadosTask(AlterarDadosListener listener) {
+    public SalvarEspecialidadeRegiaoTask(SalvarEspecialidadeRegiaoListener listener) {
         mListener = listener;
     }
 
@@ -31,7 +35,8 @@ public class AlterarDadosTask extends AsyncTask<String, Void, String> {
     @Override
     protected String doInBackground(String... params) {
         String url = params[0];
-        String jsonData = params[1];
+        String especialidade = params[1];
+        String regiao = params[2];
 
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
@@ -43,9 +48,14 @@ public class AlterarDadosTask extends AsyncTask<String, Void, String> {
             urlConnection.setRequestMethod("POST");
             urlConnection.setRequestProperty("Content-Type", "application/json");
 
+            // Construção dos dados JSON a serem enviados
+            JSONObject requestData = new JSONObject();
+            requestData.put("especialidade", especialidade);
+            requestData.put("regiao", regiao);
+
             // Envio dos dados JSON para o servidor
             OutputStream os = urlConnection.getOutputStream();
-            os.write(jsonData.getBytes());
+            os.write(requestData.toString().getBytes());
             os.flush();
 
             // Recebimento da resposta do servidor
@@ -65,8 +75,7 @@ public class AlterarDadosTask extends AsyncTask<String, Void, String> {
                 return null;
             }
             return buffer.toString();
-        } catch (IOException e) {
-            // Captura de exceções e registro de erros
+        } catch (IOException | JSONException e) {
             Log.e(TAG, "Error ", e);
             return null;
         } finally {
@@ -93,14 +102,14 @@ public class AlterarDadosTask extends AsyncTask<String, Void, String> {
             try {
                 JSONObject jsonResponse = new JSONObject(result);
                 String message = jsonResponse.getString("message");
-                mListener.onAlterarDadosSuccess(message);
+                mListener.onSalvarSuccess(message);
             } catch (JSONException e) {
                 // Se houver erro na interpretação da resposta, informa sucesso genérico
-                mListener.onAlterarDadosSuccess("Dados do usuário alterado!");
+                mListener.onSalvarSuccess("Salvo no Banco de dados!");
             }
         } else {
             // Se não houver resposta, informa erro de comunicação
-            mListener.onAlterarDadosError("Erro de comunicação com o servidor");
+            mListener.onSalvarError("Erro de comunicação com o servidor");
         }
     }
 }

@@ -10,6 +10,7 @@ import android.widget.Button;
 
 public class TelaDeAgendamento extends AppCompatActivity {
 
+    // Declaração dos botões
     private Button btnPerfilAgendamento;
     private Button btnAgendamento;
     private Button btnConsultaAgendadas;
@@ -21,7 +22,9 @@ public class TelaDeAgendamento extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_de_agendamento);
 
+        // Inicialização dos botões
         btnPerfilAgendamento = findViewById(R.id.btnPerfilAgendamento);
+        // Configuração do evento de clique para abrir a tela de perfil
         btnPerfilAgendamento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -29,6 +32,8 @@ public class TelaDeAgendamento extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // Repetido para os demais botões
         btnAgendamento = findViewById(R.id.btnAgendamento);
         btnAgendamento.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,6 +42,7 @@ public class TelaDeAgendamento extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         btnConsultaAgendadas = findViewById(R.id.btnConsultaAgendamento);
         btnConsultaAgendadas.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +51,7 @@ public class TelaDeAgendamento extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         btnAvaliarAplicativo = findViewById(R.id.btnAvaliarAplicativo);
         btnAvaliarAplicativo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,13 +60,14 @@ public class TelaDeAgendamento extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         btnSairAgendamento = findViewById(R.id.btnSairAgendamento);
         btnSairAgendamento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Fecha a atividade atual e todas as atividades parentes
                 finishAffinity();
             }
         });
-
     }
 }
