@@ -60,12 +60,12 @@
         app:layout_constraintVertical_bias="0.594" />
 
     <EditText
-        android:id="@+id/editTxtCarteirinhaPerfil2"
+        android:id="@+id/editTxtTelefonePerfil2"
         android:layout_width="364dp"
         android:layout_height="41dp"
         android:ems="10"
+        android:hint="Telefone"
         android:inputType="textPersonName"
-        android:hint="Número da carteirinha"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.34"
@@ -84,7 +84,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTxtCarteirinhaPerfil2"
+        app:layout_constraintTop_toBottomOf="@+id/editTxtTelefonePerfil2"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button

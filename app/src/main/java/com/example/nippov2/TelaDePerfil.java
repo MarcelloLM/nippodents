@@ -15,7 +15,7 @@ public class TelaDePerfil extends AppCompatActivity implements AlterarDadosTask.
     private EditText editTxtCPFPerfil;
     private EditText editTxtNomePerfil;
     private EditText editTxtEmailPerfil;
-    private EditText editTxtCarteirinhaPerfil2;
+    private EditText editTxtTelefonePerfil2;
     private Button btnAlterarDados;
 
     private Button btnVoltarAgendamento;
@@ -28,7 +28,7 @@ public class TelaDePerfil extends AppCompatActivity implements AlterarDadosTask.
         editTxtCPFPerfil = findViewById(R.id.editTxtCPFPerfil);
         editTxtNomePerfil = findViewById(R.id.editTxtNomePerfil);
         editTxtEmailPerfil = findViewById(R.id.editTxtEmailPerfil);
-        editTxtCarteirinhaPerfil2 = findViewById(R.id.editTxtCarteirinhaPerfil2);
+        editTxtTelefonePerfil2 = findViewById(R.id.editTxtTelefonePerfil2);
         btnAlterarDados = findViewById(R.id.btnAlterarDados);
 
         btnAlterarDados.setOnClickListener(new View.OnClickListener() {
@@ -51,14 +51,14 @@ public class TelaDePerfil extends AppCompatActivity implements AlterarDadosTask.
         String cpf = editTxtCPFPerfil.getText().toString();
         String nome = editTxtNomePerfil.getText().toString();
         String email = editTxtEmailPerfil.getText().toString();
-        String carteirinha = editTxtCarteirinhaPerfil2.getText().toString();
+        String telefone = editTxtTelefonePerfil2.getText().toString();
 
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("cpf", cpf);
             jsonObject.put("nome", nome);
             jsonObject.put("email", email);
-            jsonObject.put("carteirinha", carteirinha);
+            jsonObject.put("telefone", telefone);
         } catch (JSONException e) {
             e.printStackTrace();
         }
